@@ -5,7 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../css/signup.css">
-    <script src="../js/signup.js"></script>
+    <script defer src="../js/signup.js"></script>
 </head>
 <body>
 
@@ -17,7 +17,7 @@
         <a href="#" class="btn linkedin"><i class="fa fa-linkedin"></i> Linkedin</a>
     </div>
 </div>
-    <form action="/action_page.php" name="form1" style="border:1px solid #ccc">
+    <form action="/action_page.php" name="form1" id="form" style="border:1px solid #ccc">
         <div class="container">
             <table>
             <tr>
@@ -26,14 +26,14 @@
             </tr>
             <tr>
                 <td><label><b>Password:</b></label></td>
-                <td><input type="password" placeholder="Enter Password" name="psw" value="fake" id="input" required>
+                <td><input type="password" placeholder="Enter Password" name="psw" value="fake" id="input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                 </td>
                 <td class="fa fa-fw fa-eye field-icon toggle-password" type="checkbox" onclick="validatePass()"></td>
             </tr>
 
             <tr>
                 <td><label><b>Repeat Password:</b></label></td>
-                <td><input type="password" placeholder="Repeat Password" name="psw-repeat" required></td>
+                <td><input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" onkeyup="validateRepeat()" required></td>
             </tr>
             </table>
         </div>
@@ -48,9 +48,18 @@
             <input type="checkbox" name="newsletter" id="newsletter">
             <label for="newsletter">Sign up to our newsletter today</label><br><br>
         </div>
+
         <div class="clearfix">
-            <button type="submit" class="signupbtn" id="submit" onclick="validateEmail()">Sign Up</button>
+            <button type="submit" class="signupbtn" id="submit" onclick="validatePsw()" onclick="validateEmail()" >Sign Up</button>
         </div>
     </form>
+<div id="message">
+    <h3>Password must contain the following:</h3>
+    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+    <p id="number" class="invalid">A <b>number</b></p>
+    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+</div>
+
 </body>
 </html>

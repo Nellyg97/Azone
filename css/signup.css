@@ -77,6 +77,9 @@ input[type=text]:focus, input[type=password]:focus {
     border-radius: 20%;
     background-color: whitesmoke;
 }
+.country {
+
+}
 hr {
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
